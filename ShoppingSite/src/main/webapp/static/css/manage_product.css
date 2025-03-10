@@ -1,0 +1,145 @@
+/* 商品管理ページ全体 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* タイトル */
+h1, h2 {
+    color: #333;
+}
+
+/* テーブルデザイン */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* テーブルのヘッダー */
+th {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+/* テーブルのセル */
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* 操作列の調整 */
+td.actions {
+    text-align: center; /* ボタンを中央揃え */
+    vertical-align: middle; /* 縦の中央揃え */
+    white-space: nowrap; /* ボタンの折り返しを防ぐ */
+    width: 80px;
+}
+
+
+
+td.actions a.edit:hover {
+    background-color: #218838;
+}
+
+/* 編集ボタン */
+td.actions a.edit {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 40px; /* ボタンの幅を統一 */
+    text-align: center;
+}
+
+/* 削除ボタン */
+td.actions form {
+    margin: 0;
+    display: inline-block;
+}
+
+td.actions form input[type="submit"] {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 60px;
+    text-align: center;
+}
+
+td.actions form input[type="submit"]:hover {
+    background-color: #c82333;
+}
+
+
+
+/* 新商品追加フォーム */
+.new_product_add_form{
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin-top: 20px;
+}
+
+/* ラベル */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 入力フィールド */
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* 送信ボタン */
+form input[type="submit"] {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+form input[type="submit"]:hover {
+    background: #0056b3;
+}
+
+/* ログアウトリンク */
+a[href="logout"] {
+    display: inline-block;
+    margin-top: 20px;
+    color: #dc3545;
+    font-weight: bold;
+}

@@ -1,0 +1,163 @@
+/* カートページ専用のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+/* ヘッダー */
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+}
+
+nav {
+    text-align: right;
+    margin-right: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* メインコンテンツ */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* カートリスト */
+.cart-list {
+
+    padding: 0;
+}
+
+/* カートリスト全体 */
+.cart-list li {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 商品情報（画像・名前・数量） */
+.cart-item-details {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+/* 商品画像 */
+.cart-item-details img {
+    width: 50px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+/* 商品名 */
+.cart-item-details span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 数量入力 */
+.cart-item-details input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-left: 15px;
+}
+
+/* ボタンエリア */
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* ボタンの間隔 */
+}
+
+/* ボタン共通スタイル */
+.cart-list button {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 100px;
+    height: 40px;
+    
+}
+
+/* 更新ボタン */
+.cart-list button[name="update"] {
+    background-color: #FFA733;
+    color: white;
+}
+
+.cart-list button[name="update"]:hover {
+    background-color: #FF9900;
+}
+
+/* 削除ボタン */
+.cart-list button[name="remove"] {
+    background-color: #d9534f;
+    color: white;
+}
+
+.cart-list button[name="remove"]:hover {
+    background-color: #c9302c;
+}
+
+
+/* 購入ボタン */
+.purchase button {
+    display: block;
+    width: 100%;
+    background-color: #28a745;
+    margin-top: 15px;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.purchase botton:hover {
+    background-color: #218838;
+}
+
+/* 合計金額 */
+p {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* フッター */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
