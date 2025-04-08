@@ -11,7 +11,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import servlet.model.Product;
 
 @WebServlet("/ProductListServlet")
 public class ProductListServlet extends HttpServlet {
@@ -31,9 +30,9 @@ public class ProductListServlet extends HttpServlet {
         // 商品リストを取得
         ProductDao productDao = new ProductDao();
         //List<ProductDto> sortedProducts = productDao.getSortedProducts(sort);
-        List<Product> sortedProducts = new ArrayList<>();
+        List<ProductDto> sortedProducts = new ArrayList<>();
         for (ProductDto dto : productDao.getSortedProducts(sort)) {
-            Product product = new Product(dto.getId(), dto.getName(), dto.getPrice(), dto.getDescription(), dto.getImagePath());
+            ProductDto product = new ProductDto(dto.getId(), dto.getName(), dto.getDescription(), dto.getPrice(), dto.getStock(), dto.getImagePath());
             sortedProducts.add(product);
         }
 

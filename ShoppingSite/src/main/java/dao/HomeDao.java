@@ -7,26 +7,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import servlet.model.Product;
+import dto.ProductDto;
 import util.DBUtil;
 
 public class HomeDao {
     
-    public List<Product> getAllProducts() {
-        List<Product> products = new ArrayList<>();
+    public List<ProductDto> getAllProducts() {
+        List<ProductDto> products = new ArrayList<>();
         
-        String sql = "SELECT product_id, name, price, description, image_path FROM products";
+        String sql = "SELECT product_id, name, price, description, stock, image_path FROM products";
         
         try (Connection conn = DBUtil.openConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             
             while (rs.next()) {
-                Product product = new Product(
+                ProductDto product = new ProductDto(
                     rs.getInt("product_id"),
                     rs.getString("name"),
-                    rs.getInt("price"),
                     rs.getString("description"),
+                    rs.getInt("price"),
+                    rs.getInt("stock"),
                     rs.getString("image_path")
                 );
                 products.add(product);

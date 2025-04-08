@@ -3,13 +3,16 @@ package servlet;
 import java.io.IOException;
 import java.util.List;
 
-import dao.ProductDao;
-import dto.ProductDto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import dao.ProductDao;
+import dto.ProductDto;
+import dto.UsersDto;
 
 @WebServlet("/admin")
 public class ProductManagementController extends HttpServlet {
@@ -18,6 +21,16 @@ public class ProductManagementController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	HttpSession session = request.getSession(false);
+    	UsersDto loginUser = (session != null) ? (UsersDto) session.getAttribute("loginUser") : null;
+
+    	if (loginUser == null || !"admin".equals(loginUser.getRole())) {
+    	    response.sendRedirect(request.getContextPath() + "/");
+    	    return;
+    	}
+
+    	
         List<ProductDto> products = productDao.getAllProducts();
         request.setAttribute("products", products);
         request.getRequestDispatcher("/views/manage_products.jsp").forward(request, response);
@@ -26,6 +39,16 @@ public class ProductManagementController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	HttpSession session = request.getSession(false);
+    	UsersDto loginUser = (session != null) ? (UsersDto) session.getAttribute("loginUser") : null;
+
+    	if (loginUser == null || !"admin".equals(loginUser.getRole())) {
+    	    response.sendRedirect(request.getContextPath() + "/"); // トップ画面へ強制リダイレクト
+    	    return;
+    	}
+
+    	
         String action = request.getParameter("action");
 
         if ("add".equals(action)) {

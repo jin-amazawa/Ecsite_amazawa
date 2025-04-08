@@ -1,5 +1,6 @@
-<%@ page import="java.util.List, servlet.model.Product" %>
+<%@ page import="dto.ProductDto" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
     <title>検索結果</title>
@@ -9,14 +10,14 @@
 	    <h1>検索結果</h1>
 	    <ul>
 	        <%
-	            List<Product> products = (List<Product>) request.getAttribute("products");
+	            List<ProductDto> products = (List<ProductDto>) request.getAttribute("products");
 	            if (products != null && !products.isEmpty()) {
-	                for (Product product : products) {
+	                for (ProductDto product : products) {
 	            
 	        
 	        %>
 	            <li>
-	                <img src="<%= product.getImage() %>" width="100">
+	                <img src="<%= product.getImagePath() %>" width="100">
 	                <a href="productDetail?id=<%= product.getId() %>"><%= product.getName() %></a>
 	                <p>価格: ¥<%= product.getPrice() %></p>
 	                <p><%= product.getDescription() %></p>

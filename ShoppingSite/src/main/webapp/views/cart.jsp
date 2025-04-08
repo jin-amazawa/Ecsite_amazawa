@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%@ page import="servlet.model.Product" %>
+<%@ page import="dto.ProductDto" %>
 <%
-    List<Product> cart = (List<Product>) session.getAttribute("cart");
+    List<ProductDto> cart = (List<ProductDto>) session.getAttribute("cart");
     if(cart == null) {
         cart = new java.util.ArrayList<>();
     }
@@ -14,8 +14,8 @@
     
     
     int total = 0;
-    for (Product p : cart) {
-        total += p.getPrice() * p.getQuantity();
+    for (ProductDto p : cart) {
+        total += p.getPrice() * p.getStock();
     }
     
     
@@ -45,12 +45,12 @@
         <% } else { %>
 	        <form action="<%= request.getContextPath() %>/update-cart" method="post">
 	            <ul class="cart-list">
-	                <% for(Product item : cart) { %>
+	                <% for(ProductDto item : cart) { %>
 	                    <li>
 	                    	<div class="cart-item-details">
-		                        <img src="<%= item.getImage() %>" alt="<%= item.getName() %>" width="50">
+		                        <img src="<%= item.getImagePath() %>" alt="<%= item.getName() %>" width="50">
 		                        <span><%= item.getName() %> - ¥<%= item.getPrice() %></span>
-		                        <input type="number" name="quantity_<%= item.getId() %>" value="<%= item.getQuantity() %>" min="1">
+		                        <input type="number" name="quantity_<%= item.getId() %>" value="<%= item.getStock() %>" min="1">
 	                        </div>
 	                        <div class="cart-item-actions">
 	                            <button type="submit" name="update" value="<%= item.getId() %>">更新</button>

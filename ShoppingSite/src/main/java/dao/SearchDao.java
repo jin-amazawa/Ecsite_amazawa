@@ -7,12 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import servlet.model.Product;
+//import servlet.model.Product;
+import dto.ProductDto;
 import util.DBUtil;
 
 public class SearchDao {
-    public static List<Product> searchProducts(String query){
-        List<Product> products = new ArrayList<>();
+    public static List<ProductDto> searchProducts(String query){
+        List<ProductDto> products = new ArrayList<>();
         String sql = "SELECT * FROM products WHERE name COLLATE utf8mb4_general_ci LIKE ?";
 
 
@@ -22,12 +23,12 @@ public class SearchDao {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                Product product = new Product();
+                ProductDto product = new ProductDto();
                 product.setId(rs.getInt("product_id"));
                 product.setName(rs.getString("name"));
                 product.setPrice(rs.getInt("price"));
                 product.setDescription(rs.getString("description"));
-                product.setImage(rs.getString("image_path"));
+                product.setImagePath(rs.getString("image_path"));
                 products.add(product);
             }
         } catch (SQLException e) {

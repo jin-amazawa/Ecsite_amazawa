@@ -1,4 +1,4 @@
-package servlet.model;
+/*package servlet.model;
 
 public class Product {
     private int product_id;
@@ -65,4 +65,4 @@ public class Product {
     
     
     
-}
+}*/

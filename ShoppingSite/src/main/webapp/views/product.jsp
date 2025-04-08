@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="servlet.model.Product" %>
+<%@ page import="dto.ProductDto" %>
 <%
-    Product product = (Product) request.getAttribute("product");
+    ProductDto product = (ProductDto) request.getAttribute("product");
 %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -20,7 +20,7 @@
     </header>
     <main>
         <div class="product-detail">
-            <img src="<%= product.getImage() %>" alt="<%= product.getName() %>">
+            <img src="<%= product.getImagePath() %>" alt="<%= product.getName() %>">
             <div class="details">
                 <p>価格: ¥<%= product.getPrice() %></p>
                 <p><%= product.getDescription() %></p>

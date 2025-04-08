@@ -1,10 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.List" %>
-<%@ page import="servlet.model.Product" %>
+<%@ page import="dto.ProductDto" %>
+
 
 <%
-    // セッションから購入確定後の情報を取得
-    List<Product> orderedProducts = (List<Product>) session.getAttribute("cart");
+
+    List<ProductDto> orderedProducts = (List<ProductDto>) session.getAttribute("orderedProducts");
+    if (orderedProducts == null || orderedProducts.isEmpty()) {
+        response.sendRedirect(request.getContextPath() + "/");
+        return;
+    }
+%>
+
+<%
 
     // カートが空ならトップページへリダイレクト
     if (orderedProducts == null || orderedProducts.isEmpty()) {
@@ -14,8 +22,8 @@
 
     // 合計金額の計算
     int total = 0;
-    for (Product item : orderedProducts) {
-        total += item.getPrice() * item.getQuantity();
+    for (ProductDto item : orderedProducts) {
+        total += item.getPrice() * item.getStock();
     }
 
     double taxRate = 0.10; // 消費税率10%
@@ -47,11 +55,11 @@
                 <th>数量</th>
                 <th>小計</th>
             </tr>
-            <% for (Product item : orderedProducts) { %>
+            <% for (ProductDto item : orderedProducts) { %>
                 <tr>
                     <td><%= item.getName() %></td>
-                    <td><%= item.getQuantity() %></td>
-                    <td>¥<%= item.getPrice() * item.getQuantity() %></td>
+                    <td><%= item.getStock() %></td>
+                    <td>¥<%= item.getPrice() * item.getStock() %></td>
                 </tr>
             <% } %>
         </table>

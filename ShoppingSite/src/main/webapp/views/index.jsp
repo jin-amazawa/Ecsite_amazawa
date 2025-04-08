@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8"  pageEncoding="UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%@ page import="servlet.model.Product" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="jakarta.servlet.http.HttpSession" %>
+<%@ page import="dto.ProductDto" %>
 
 
 <%
@@ -17,7 +17,7 @@
 
 
 <%
-    List<Product> products = (List<Product>) application.getAttribute("products");
+    List<ProductDto> products = (List<ProductDto>) application.getAttribute("products");
 
 	if (products == null) {
 	    products = new ArrayList<>();
@@ -27,7 +27,7 @@
 %>
 
 <%
-    List<Product> sortedProducts = (List<Product>) request.getAttribute("sortedProducts");
+    List<ProductDto> sortedProducts = (List<ProductDto>) request.getAttribute("sortedProducts");
 
     if (sortedProducts == null) {
         sortedProducts = products; // デフォルトリスト
@@ -35,7 +35,7 @@
 %>
 
 <% 
-    List<Product> cart = (List<Product>) session.getAttribute("cart");
+    List<ProductDto> cart = (List<ProductDto>) session.getAttribute("cart");
     if(cart == null) {
         cart = new java.util.ArrayList<>();
     }
@@ -68,7 +68,7 @@
         
         <nav>
         	<img src="<%= request.getContextPath() %>/static/images/rogo2.jpg" alt = "rogo1">
-            <a href="cart">カート (<%= cart.size() %>)</a>
+            <a href="<%= request.getContextPath() %>/cart">カート (<%= cart.size() %>)</a>
             
             <% if (username != null) { %>
 	            <span>こんにちは、<%= username %> さん</span>
@@ -82,9 +82,9 @@
 		
 		<div class="slider-container">
 	        <div class="slider">
-	            <% for(Product product : sortedProducts) { %>
+	            <% for(ProductDto product : sortedProducts) { %>
 	                <div>
-	                    <a href="<%= request.getContextPath() %>/product?id=<%= product.getId() %>"><img src="<%= product.getImage() %>" alt="<%= product.getName() %>"></a>
+	                    <a href="<%= request.getContextPath() %>/product?id=<%= product.getId() %>"><img src="<%= product.getImagePath() %>" alt="<%= product.getName() %>"></a>
 	                </div>
 	            <% } %>
 	        </div>
@@ -105,9 +105,9 @@
 		
 		
         <ul class="product-list">
-            <% for(Product product : sortedProducts) { %>
+            <% for(ProductDto product : sortedProducts) { %>
             <li class="product-item">
-                <a href="<%= request.getContextPath() %>/product?id=<%= product.getId() %>"><img src="<%= product.getImage() %>" alt="<%= product.getName() %>"></a>
+                <a href="<%= request.getContextPath() %>/product?id=<%= product.getId() %>"><img src="<%= product.getImagePath() %>" alt="<%= product.getName() %>"></a>
                 <h2><a href="<%= request.getContextPath() %>/product?id=<%= product.getId() %>"><%= product.getName() %></a></h2>
                 <p>価格: ¥<%= product.getPrice() %></p>
                 <p><%= product.getDescription() %></p>

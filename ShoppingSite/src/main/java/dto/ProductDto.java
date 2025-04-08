@@ -20,7 +20,7 @@ public class ProductDto {
         this.image_Path = image_Path;
     }
 
-    // Getter & Setter
+	// Getter & Setter
     public int getId() { return product_id; }
     public void setId(int id) { this.product_id = id; }
 

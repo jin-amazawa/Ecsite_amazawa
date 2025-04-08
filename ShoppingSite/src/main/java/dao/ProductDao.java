@@ -160,6 +160,31 @@ public class ProductDao {
         return new ProductDto(0, "未取得", "データなし", 0, 0, "データなし"); // デフォルト値を返す
     }
     
+    public ProductDto findById(int id) {
+        String sql = "SELECT * FROM products WHERE product_id = ?";
+        try (Connection conn = DBUtil.openConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                ProductDto product = new ProductDto();
+                product.setId(rs.getInt("product_id"));
+                product.setName(rs.getString("name"));
+                product.setDescription(rs.getString("description"));
+                product.setPrice(rs.getInt("price"));
+                product.setStock(rs.getInt("stock"));
+                product.setImagePath(rs.getString("image_path"));
+                return product;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    
     
 }
 

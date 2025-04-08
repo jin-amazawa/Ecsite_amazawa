@@ -1,0 +1,118 @@
+/* 商品詳細ページ全体 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+/* ヘッダー */
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+}
+
+nav {
+    text-align: right;
+    margin-right: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* メインコンテンツ */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 商品詳細エリア */
+.product-detail {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 商品画像 */
+.product-detail img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 商品情報 */
+.details {
+    flex-grow: 1;
+}
+
+.details p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* 「カートに追加」ボタン */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #FFA733;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #FF9900;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* スマホ対応（小さい画面では縦並びに） */
+@media (max-width: 600px) {
+    .product-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-detail img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* フッター */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

@@ -54,7 +54,9 @@
 	    <input type="text" name="image_path"><br>
 	
 	    <input type="submit" value="商品を追加">
-</form>
+	</form>
+	
+	<p><a href="<%= request.getContextPath() %>/orders" class="link-button">購入履歴を見る</a></p>
     
 <a href="logout">ログアウト</a>    
 
